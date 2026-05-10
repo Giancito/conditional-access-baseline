@@ -1,0 +1,37 @@
+{
+  "displayName": "CA028 - Todas las aplicaciones en la nube - Bloquear acceso - Para cuentas de servicio - Cuando el acceso provenga de paises no permitidos",
+  "description": "Bloquea cuentas de servicio tradicionales fuera de paises permitidos.",
+  "state": "disabled",
+  "conditions": {
+    "users": {
+      "includeGroups": [
+        "__GRP_CA_CUENTAS_SERVICIO_ID__"
+      ],
+      "excludeGroups": [
+        "__GRP_CA_EXC_EMERGENCIA_ID__"
+      ]
+    },
+    "applications": {
+      "includeApplications": [
+        "All"
+      ]
+    },
+    "clientAppTypes": [
+      "all"
+    ],
+    "locations": {
+      "includeLocations": [
+        "All"
+      ],
+      "excludeLocations": [
+        "__LOC_PAISES_PERMITIDOS_SERVICIOS_ID__"
+      ]
+    }
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "block"
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "displayName": "CA016 - Microsoft Graph Explorer - Bloquear acceso - Para todos los usuarios",
+  "description": "Bloquea Microsoft Graph Explorer.",
+  "state": "disabled",
+  "conditions": {
+    "users": {
+      "includeUsers": [
+        "All"
+      ],
+      "excludeGroups": [
+        "__GRP_CA_EXC_EMERGENCIA_ID__",
+        "__GRP_CA_EXC_SERVICIOS_ID__"
+      ]
+    },
+    "applications": {
+      "includeApplications": [
+        "de8bc8b5-d9f9-48b1-a8ad-b748da725064"
+      ]
+    },
+    "clientAppTypes": [
+      "all"
+    ]
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "block"
+    ]
+  }
+}

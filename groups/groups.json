@@ -1,0 +1,20 @@
+{
+  "groups": [
+    {
+      "displayName": "GRP-CA-EXC-EMERGENCIA",
+      "description": "Cuentas de emergencia o break glass."
+    },
+    {
+      "displayName": "GRP-CA-EXC-SERVICIOS",
+      "description": "Cuentas de servicio tradicionales excluidas de politicas de usuario. No incluir service principals."
+    },
+    {
+      "displayName": "GRP-CA-EXC-TEMPORAL",
+      "description": "Exclusiones temporales controladas para troubleshooting o migracion."
+    },
+    {
+      "displayName": "GRP-CA-CUENTAS-SERVICIO",
+      "description": "Cuentas de servicio tradicionales protegidas por politicas CA de cuentas de servicio. No incluir service principals ni managed identities."
+    }
+  ]
+}

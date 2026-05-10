@@ -1,0 +1,40 @@
+{
+  "displayName": "CA032 - Todas las aplicaciones en la nube - Bloquear acceso - Para identidades de agente - Cuando el riesgo sea alto",
+  "state": "disabled",
+  "conditions": {
+    "clientAppTypes": [
+      "all"
+    ],
+    "agentIdRiskLevels": "high",
+    "applications": {
+      "includeApplications": [
+        "All"
+      ],
+      "excludeApplications": []
+    },
+    "users": {
+      "includeUsers": [
+        "None"
+      ],
+      "excludeUsers": [],
+      "includeGroups": [],
+      "excludeGroups": [],
+      "includeRoles": [],
+      "excludeRoles": []
+    },
+    "clientApplications": {
+      "includeServicePrincipals": [],
+      "includeAgentIdServicePrincipals": [
+        "All"
+      ],
+      "excludeServicePrincipals": [],
+      "excludeAgentIdServicePrincipals": []
+    }
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "block"
+    ]
+  }
+}

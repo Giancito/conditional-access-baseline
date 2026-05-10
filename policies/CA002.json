@@ -1,0 +1,31 @@
+{
+  "displayName": "CA002 - Todas las aplicaciones en la nube - Bloquear autenticacion heredada - Para todos los usuarios",
+  "description": "Bloquea clientes heredados que no soportan MFA.",
+  "state": "disabled",
+  "conditions": {
+    "users": {
+      "includeUsers": [
+        "All"
+      ],
+      "excludeGroups": [
+        "__GRP_CA_EXC_EMERGENCIA_ID__",
+        "__GRP_CA_EXC_SERVICIOS_ID__"
+      ]
+    },
+    "applications": {
+      "includeApplications": [
+        "All"
+      ]
+    },
+    "clientAppTypes": [
+      "exchangeActiveSync",
+      "other"
+    ]
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "block"
+    ]
+  }
+}

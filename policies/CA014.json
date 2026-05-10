@@ -1,0 +1,29 @@
+{
+  "displayName": "CA014 - Todas las aplicaciones en la nube - Habilitar Continuous Access Evaluation - Para usuarios",
+  "description": "Habilita Continuous Access Evaluation para usuarios.",
+  "state": "disabled",
+  "conditions": {
+    "users": {
+      "includeUsers": [
+        "All"
+      ],
+      "excludeGroups": [
+        "__GRP_CA_EXC_EMERGENCIA_ID__",
+        "__GRP_CA_EXC_SERVICIOS_ID__"
+      ]
+    },
+    "applications": {
+      "includeApplications": [
+        "All"
+      ]
+    },
+    "clientAppTypes": [
+      "all"
+    ]
+  },
+  "sessionControls": {
+    "continuousAccessEvaluation": {
+      "mode": "strictLocation"
+    }
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "displayName": "CA020 - Aplicaciones seleccionadas - Bloquear acceso - Para invitados no aprobados",
+  "description": "Plantilla para restringir invitados a aplicaciones aprobadas.",
+  "state": "disabled",
+  "conditions": {
+    "users": {
+      "includeGuestsOrExternalUsers": {
+        "guestOrExternalUserTypes": "internalGuest,b2bCollaborationGuest,b2bCollaborationMember,b2bDirectConnectUser,otherExternalUser",
+        "externalTenants": {
+          "membershipKind": "all"
+        }
+      },
+      "excludeGroups": [
+        "__GRP_CA_EXC_EMERGENCIA_ID__"
+      ]
+    },
+    "applications": {
+      "includeApplications": [
+        "All"
+      ]
+    },
+    "clientAppTypes": [
+      "all"
+    ]
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "block"
+    ]
+  }
+}

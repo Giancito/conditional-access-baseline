@@ -1,0 +1,42 @@
+{
+  "displayName": "CA026 - Administracion de Microsoft Azure - Requerir MFA - Para todos los usuarios",
+  "description": "Requiere MFA para todos los usuarios que accedan a Administracion de Microsoft Azure / Windows Azure Service Management API.",
+  "state": "disabled",
+  "conditions": {
+    "users": {
+      "includeUsers": [
+        "All"
+      ],
+      "excludeGroups": [
+        "__GRP_CA_EXC_EMERGENCIA_ID__",
+        "__GRP_CA_EXC_SERVICIOS_ID__"
+      ],
+      "excludeUsers": [],
+      "includeGroups": [],
+      "includeRoles": [],
+      "excludeRoles": []
+    },
+    "applications": {
+      "includeApplications": [
+        "797f4846-ba00-4fd7-ba43-dac1f8f63013"
+      ],
+      "excludeApplications": [],
+      "includeUserActions": [],
+      "includeAuthenticationContextClassReferences": []
+    },
+    "clientAppTypes": [
+      "all"
+    ],
+    "signInRiskLevels": [],
+    "userRiskLevels": []
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "mfa"
+    ],
+    "customAuthenticationFactors": [],
+    "termsOfUse": []
+  },
+  "sessionControls": null
+}

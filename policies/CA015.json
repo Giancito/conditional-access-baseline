@@ -1,0 +1,42 @@
+{
+  "displayName": "CA015 - Linux - Bloquear acceso - Para dispositivos no administrados",
+  "description": "Plantilla opcional para bloquear Linux no administrado.",
+  "state": "disabled",
+  "conditions": {
+    "users": {
+      "includeUsers": [
+        "All"
+      ],
+      "excludeGroups": [
+        "__GRP_CA_EXC_EMERGENCIA_ID__",
+        "__GRP_CA_EXC_SERVICIOS_ID__"
+      ]
+    },
+    "applications": {
+      "includeApplications": [
+        "All"
+      ]
+    },
+    "clientAppTypes": [
+      "browser",
+      "mobileAppsAndDesktopClients"
+    ],
+    "platforms": {
+      "includePlatforms": [
+        "linux"
+      ]
+    },
+    "devices": {
+      "deviceFilter": {
+        "mode": "exclude",
+        "rule": "device.trustType -eq \"ServerAD\" -or device.isCompliant -eq True"
+      }
+    }
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "block"
+    ]
+  }
+}

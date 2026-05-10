@@ -1,0 +1,52 @@
+{
+  "displayName": "CA006 - Microsoft 365 - Requerir dispositivo compatible o unido hibrido - Para usuarios Windows",
+  "description": "Requiere dispositivo compatible o unido hibrido para clientes de escritorio y aplicaciones moviles en Windows. El acceso por navegador se controla con CA009 para permitir acceso web limitado desde dispositivos no administrados.",
+  "state": "disabled",
+  "conditions": {
+    "users": {
+      "includeUsers": [
+        "All"
+      ],
+      "excludeGroups": [
+        "__GRP_CA_EXC_EMERGENCIA_ID__",
+        "__GRP_CA_EXC_SERVICIOS_ID__"
+      ],
+      "excludeUsers": [],
+      "includeGroups": [],
+      "includeRoles": [],
+      "excludeRoles": []
+    },
+    "applications": {
+      "includeApplications": [
+        "Office365"
+      ],
+      "excludeApplications": [
+        "0000000a-0000-0000-c000-000000000000",
+        "d4ebce55-015a-49b5-a083-c84d1797ae8c"
+      ],
+      "includeUserActions": [],
+      "includeAuthenticationContextClassReferences": []
+    },
+    "clientAppTypes": [
+      "mobileAppsAndDesktopClients"
+    ],
+    "platforms": {
+      "includePlatforms": [
+        "windows"
+      ],
+      "excludePlatforms": []
+    },
+    "signInRiskLevels": [],
+    "userRiskLevels": []
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "compliantDevice",
+      "domainJoinedDevice"
+    ],
+    "customAuthenticationFactors": [],
+    "termsOfUse": []
+  },
+  "sessionControls": null
+}

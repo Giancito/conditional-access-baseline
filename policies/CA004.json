@@ -1,0 +1,33 @@
+{
+  "displayName": "CA004 - Todas las aplicaciones en la nube - Bloquear acceso - Para todos los usuarios - Cuando se use Authentication Transfer",
+  "description": "Bloquea Authentication Transfer.",
+  "state": "disabled",
+  "conditions": {
+    "users": {
+      "includeUsers": [
+        "All"
+      ],
+      "excludeGroups": [
+        "__GRP_CA_EXC_EMERGENCIA_ID__",
+        "__GRP_CA_EXC_SERVICIOS_ID__"
+      ]
+    },
+    "applications": {
+      "includeApplications": [
+        "All"
+      ]
+    },
+    "clientAppTypes": [
+      "all"
+    ],
+    "authenticationFlows": {
+      "transferMethods": "authenticationTransfer"
+    }
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "block"
+    ]
+  }
+}

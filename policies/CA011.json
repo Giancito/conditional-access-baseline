@@ -1,0 +1,33 @@
+{
+  "displayName": "CA011 - Todas las aplicaciones en la nube - Bloquear acceso - Para inicios de sesion de alto riesgo",
+  "description": "Bloquea inicios de sesion de alto riesgo.",
+  "state": "disabled",
+  "conditions": {
+    "users": {
+      "includeUsers": [
+        "All"
+      ],
+      "excludeGroups": [
+        "__GRP_CA_EXC_EMERGENCIA_ID__",
+        "__GRP_CA_EXC_SERVICIOS_ID__"
+      ]
+    },
+    "applications": {
+      "includeApplications": [
+        "All"
+      ]
+    },
+    "clientAppTypes": [
+      "all"
+    ],
+    "signInRiskLevels": [
+      "high"
+    ]
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "block"
+    ]
+  }
+}

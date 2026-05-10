@@ -1,0 +1,37 @@
+{
+  "displayName": "CA012 - Todas las aplicaciones en la nube - Requerir reautenticacion - Para usuarios - Cada 12 horas",
+  "description": "Frecuencia de inicio de sesion de 12 horas para usuarios estandar solo en dispositivos no confiables.",
+  "state": "disabled",
+  "conditions": {
+    "users": {
+      "includeUsers": [
+        "All"
+      ],
+      "excludeGroups": [
+        "__GRP_CA_EXC_EMERGENCIA_ID__",
+        "__GRP_CA_EXC_SERVICIOS_ID__"
+      ]
+    },
+    "applications": {
+      "includeApplications": [
+        "All"
+      ]
+    },
+    "clientAppTypes": [
+      "all"
+    ],
+    "devices": {
+      "deviceFilter": {
+        "mode": "exclude",
+        "rule": "device.trustType -eq \"ServerAD\" -or device.isCompliant -eq True"
+      }
+    }
+  },
+  "sessionControls": {
+    "signInFrequency": {
+      "isEnabled": true,
+      "type": "hours",
+      "value": 12
+    }
+  }
+}

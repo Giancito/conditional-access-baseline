@@ -1,0 +1,33 @@
+{
+  "displayName": "CA003 - Todas las aplicaciones en la nube - Bloquear acceso - Para todos los usuarios - Cuando se use Device Code Flow",
+  "description": "Bloquea Device Code Flow.",
+  "state": "disabled",
+  "conditions": {
+    "users": {
+      "includeUsers": [
+        "All"
+      ],
+      "excludeGroups": [
+        "__GRP_CA_EXC_EMERGENCIA_ID__",
+        "__GRP_CA_EXC_SERVICIOS_ID__"
+      ]
+    },
+    "applications": {
+      "includeApplications": [
+        "All"
+      ]
+    },
+    "clientAppTypes": [
+      "all"
+    ],
+    "authenticationFlows": {
+      "transferMethods": "deviceCodeFlow"
+    }
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "block"
+    ]
+  }
+}

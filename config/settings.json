@@ -1,0 +1,10 @@
+{
+  "defaultPolicyState": "disabled",
+  "phishingResistantAuthenticationStrengthId": "00000000-0000-0000-0000-000000000004",
+  "privilegedServicePrincipalId": "",
+  "notes": [
+    "Cambiar IPs de ejemplo antes de produccion.",
+    "CA031 y CA032 requieren Workload ID Premium.",
+    "CA033 depende del soporte del tenant/API."
+  ]
+}

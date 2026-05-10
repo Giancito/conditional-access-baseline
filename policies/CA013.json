@@ -1,0 +1,36 @@
+{
+  "displayName": "CA013 - Todas las aplicaciones en la nube - Deshabilitar sesion persistente del navegador - Para usuarios - Cuando el dispositivo no este administrado",
+  "description": "Evita sesiones persistentes de navegador para usuarios estandar en dispositivos no confiables.",
+  "state": "disabled",
+  "conditions": {
+    "users": {
+      "includeUsers": [
+        "All"
+      ],
+      "excludeGroups": [
+        "__GRP_CA_EXC_EMERGENCIA_ID__",
+        "__GRP_CA_EXC_SERVICIOS_ID__"
+      ]
+    },
+    "applications": {
+      "includeApplications": [
+        "All"
+      ]
+    },
+    "clientAppTypes": [
+      "all"
+    ],
+    "devices": {
+      "deviceFilter": {
+        "mode": "exclude",
+        "rule": "device.trustType -eq \"ServerAD\" -or device.isCompliant -eq True"
+      }
+    }
+  },
+  "sessionControls": {
+    "persistentBrowser": {
+      "isEnabled": true,
+      "mode": "never"
+    }
+  }
+}

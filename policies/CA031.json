@@ -1,0 +1,30 @@
+{
+  "displayName": "CA031 - Todas las aplicaciones en la nube - Bloquear acceso - Para identidades de carga de trabajo - Cuando el riesgo sea alto",
+  "description": "Bloquea workload identities con riesgo alto. Requiere Workload ID Premium.",
+  "state": "disabled",
+  "conditions": {
+    "clientApplications": {
+      "includeServicePrincipals": [
+        "__SERVICE_PRINCIPAL_PRIVILEGIADO_ID__"
+      ],
+      "excludeServicePrincipals": []
+    },
+    "applications": {
+      "includeApplications": [
+        "All"
+      ]
+    },
+    "clientAppTypes": [
+      "all"
+    ],
+    "servicePrincipalRiskLevels": [
+      "high"
+    ]
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "block"
+    ]
+  }
+}

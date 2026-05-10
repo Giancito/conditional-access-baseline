@@ -1,0 +1,35 @@
+{
+  "displayName": "CA030 - Todas las aplicaciones en la nube - Requerir ubicacion confiable - Para identidades de carga de trabajo",
+  "description": "Permite service principals seleccionados solo desde IPs confiables. Requiere Workload ID Premium.",
+  "state": "disabled",
+  "conditions": {
+    "clientApplications": {
+      "includeServicePrincipals": [
+        "__SERVICE_PRINCIPAL_PRIVILEGIADO_ID__"
+      ],
+      "excludeServicePrincipals": []
+    },
+    "applications": {
+      "includeApplications": [
+        "All"
+      ]
+    },
+    "locations": {
+      "includeLocations": [
+        "All"
+      ],
+      "excludeLocations": [
+        "__LOC_IPS_CONFIANZA_IDENTIDADES_CARGA_TRABAJO_ID__"
+      ]
+    },
+    "clientAppTypes": [
+      "all"
+    ]
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "block"
+    ]
+  }
+}

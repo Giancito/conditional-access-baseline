@@ -1,0 +1,33 @@
+{
+  "displayName": "CA018 - Registrar o unir dispositivos - Requerir MFA - Para todos los usuarios",
+  "description": "Requiere MFA para registrar o unir dispositivos.",
+  "state": "disabled",
+  "conditions": {
+    "users": {
+      "includeUsers": [
+        "All"
+      ],
+      "excludeGroups": [
+        "__GRP_CA_EXC_EMERGENCIA_ID__",
+        "__GRP_CA_EXC_SERVICIOS_ID__"
+      ],
+      "excludeRoles": [
+        "d29b2b05-8046-44ba-8758-1e26182fcf32"
+      ]
+    },
+    "applications": {
+      "includeUserActions": [
+        "urn:user:registerdevice"
+      ]
+    },
+    "clientAppTypes": [
+      "all"
+    ]
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "mfa"
+    ]
+  }
+}

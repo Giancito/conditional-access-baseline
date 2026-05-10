@@ -1,0 +1,57 @@
+{
+  "displayName": "CA009 - SharePoint Online - Restringir acceso - Para dispositivos no administrados",
+  "description": "Aplica restricciones de sesion para SharePoint Online/Office 365 desde navegador cuando el dispositivo no es compatible ni unido hibrido. Permite acceso web limitado en BYOD sin bloquear completamente el acceso.",
+  "state": "disabled",
+  "conditions": {
+    "users": {
+      "includeUsers": [
+        "All"
+      ],
+      "excludeGroups": [
+        "__GRP_CA_EXC_EMERGENCIA_ID__",
+        "__GRP_CA_EXC_SERVICIOS_ID__"
+      ],
+      "excludeUsers": [],
+      "includeGroups": [],
+      "includeRoles": [],
+      "excludeRoles": []
+    },
+    "applications": {
+      "includeApplications": [
+        "Office365"
+      ],
+      "excludeApplications": [],
+      "includeUserActions": [],
+      "includeAuthenticationContextClassReferences": []
+    },
+    "clientAppTypes": [
+      "browser"
+    ],
+    "platforms": {
+      "includePlatforms": [
+        "all"
+      ],
+      "excludePlatforms": [
+        "iOS",
+        "android"
+      ]
+    },
+    "devices": {
+      "deviceFilter": {
+        "mode": "exclude",
+        "rule": "device.trustType -eq \"ServerAD\" -or device.isCompliant -eq True"
+      },
+      "includeDevices": [],
+      "excludeDevices": [],
+      "includeDeviceStates": [],
+      "excludeDeviceStates": []
+    },
+    "signInRiskLevels": [],
+    "userRiskLevels": []
+  },
+  "sessionControls": {
+    "applicationEnforcedRestrictions": {
+      "isEnabled": true
+    }
+  }
+}

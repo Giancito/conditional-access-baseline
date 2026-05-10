@@ -1,0 +1,36 @@
+{
+  "displayName": "CA008 - Aplicaciones moviles - Requerir App Protection Policy - Para usuarios moviles",
+  "description": "Requiere App Protection Policy para iOS y Android.",
+  "state": "disabled",
+  "conditions": {
+    "users": {
+      "includeUsers": [
+        "All"
+      ],
+      "excludeGroups": [
+        "__GRP_CA_EXC_EMERGENCIA_ID__",
+        "__GRP_CA_EXC_SERVICIOS_ID__"
+      ]
+    },
+    "applications": {
+      "includeApplications": [
+        "Office365"
+      ]
+    },
+    "clientAppTypes": [
+      "mobileAppsAndDesktopClients"
+    ],
+    "platforms": {
+      "includePlatforms": [
+        "iOS",
+        "android"
+      ]
+    }
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "compliantApplication"
+    ]
+  }
+}

@@ -1,0 +1,37 @@
+{
+  "displayName": "CA029 - Todas las aplicaciones en la nube - Requerir ubicacion confiable - Para cuentas de servicio",
+  "description": "Permite cuentas de servicio tradicionales solo desde IPs confiables.",
+  "state": "disabled",
+  "conditions": {
+    "users": {
+      "includeGroups": [
+        "__GRP_CA_CUENTAS_SERVICIO_ID__"
+      ],
+      "excludeGroups": [
+        "__GRP_CA_EXC_EMERGENCIA_ID__"
+      ]
+    },
+    "applications": {
+      "includeApplications": [
+        "All"
+      ]
+    },
+    "clientAppTypes": [
+      "all"
+    ],
+    "locations": {
+      "includeLocations": [
+        "All"
+      ],
+      "excludeLocations": [
+        "__LOC_IPS_CONFIANZA_CUENTAS_SERVICIO_ID__"
+      ]
+    }
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "block"
+    ]
+  }
+}

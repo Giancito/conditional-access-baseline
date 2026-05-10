@@ -1,0 +1,42 @@
+{
+  "displayName": "CA027 - Azure DevOps - Requerir MFA - Para todos los usuarios",
+  "description": "Requiere MFA para todos los usuarios que accedan a Azure DevOps. Azure DevOps se protege de forma explicita porque no queda cubierto completamente por la politica de Administracion de Microsoft Azure.",
+  "state": "disabled",
+  "conditions": {
+    "users": {
+      "includeUsers": [
+        "All"
+      ],
+      "excludeGroups": [
+        "__GRP_CA_EXC_EMERGENCIA_ID__",
+        "__GRP_CA_EXC_SERVICIOS_ID__"
+      ],
+      "excludeUsers": [],
+      "includeGroups": [],
+      "includeRoles": [],
+      "excludeRoles": []
+    },
+    "applications": {
+      "includeApplications": [
+        "499b84ac-1321-427f-aa17-267ca6975798"
+      ],
+      "excludeApplications": [],
+      "includeUserActions": [],
+      "includeAuthenticationContextClassReferences": []
+    },
+    "clientAppTypes": [
+      "all"
+    ],
+    "signInRiskLevels": [],
+    "userRiskLevels": []
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "mfa"
+    ],
+    "customAuthenticationFactors": [],
+    "termsOfUse": []
+  },
+  "sessionControls": null
+}

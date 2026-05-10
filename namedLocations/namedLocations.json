@@ -1,0 +1,32 @@
+{
+  "countryNamedLocations": [
+    {
+      "displayName": "PAISES PERMITIDOS",
+      "countriesAndRegions": [
+        "PE"
+      ],
+      "includeUnknownCountriesAndRegions": false
+    },
+    {
+      "displayName": "PAISES PERMITIDOS - CUENTAS DE SERVICIO",
+      "countriesAndRegions": [
+        "PE"
+      ],
+      "includeUnknownCountriesAndRegions": false
+    }
+  ],
+  "ipNamedLocations": [
+    {
+      "displayName": "UBICACIONES CONFIANZA - CUENTAS DE SERVICIO",
+      "ipRanges": [
+        "203.0.113.10/32"
+      ]
+    },
+    {
+      "displayName": "UBICACIONES CONFIANZA - IDENTIDADES DE CARGA DE TRABAJO",
+      "ipRanges": [
+        "203.0.113.20/32"
+      ]
+    }
+  ]
+}

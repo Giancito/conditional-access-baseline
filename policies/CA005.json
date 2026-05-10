@@ -1,0 +1,38 @@
+{
+  "displayName": "CA005 - Todas las aplicaciones en la nube - Bloquear acceso - Para todos los usuarios - Cuando el acceso provenga de paises no permitidos",
+  "description": "Bloquea acceso fuera de paises permitidos.",
+  "state": "disabled",
+  "conditions": {
+    "users": {
+      "includeUsers": [
+        "All"
+      ],
+      "excludeGroups": [
+        "__GRP_CA_EXC_EMERGENCIA_ID__",
+        "__GRP_CA_EXC_SERVICIOS_ID__"
+      ]
+    },
+    "applications": {
+      "includeApplications": [
+        "All"
+      ]
+    },
+    "clientAppTypes": [
+      "all"
+    ],
+    "locations": {
+      "includeLocations": [
+        "All"
+      ],
+      "excludeLocations": [
+        "__LOC_PAISES_PERMITIDOS_ID__"
+      ]
+    }
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "block"
+    ]
+  }
+}

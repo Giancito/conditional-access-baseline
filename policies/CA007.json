@@ -1,0 +1,36 @@
+{
+  "displayName": "CA007 - Microsoft 365 - Requerir dispositivo compatible - Para usuarios macOS",
+  "description": "Requiere dispositivo compatible para Microsoft 365 en macOS.",
+  "state": "disabled",
+  "conditions": {
+    "users": {
+      "includeUsers": [
+        "All"
+      ],
+      "excludeGroups": [
+        "__GRP_CA_EXC_EMERGENCIA_ID__",
+        "__GRP_CA_EXC_SERVICIOS_ID__"
+      ]
+    },
+    "applications": {
+      "includeApplications": [
+        "Office365"
+      ]
+    },
+    "clientAppTypes": [
+      "browser",
+      "mobileAppsAndDesktopClients"
+    ],
+    "platforms": {
+      "includePlatforms": [
+        "macOS"
+      ]
+    }
+  },
+  "grantControls": {
+    "operator": "OR",
+    "builtInControls": [
+      "compliantDevice"
+    ]
+  }
+}
