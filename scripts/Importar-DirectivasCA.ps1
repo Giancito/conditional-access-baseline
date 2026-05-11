@@ -608,9 +608,23 @@ function New-OrGetCountryNamedLocation {
     }
 
     Write-Host "Creando ubicacion de paises: $($Item.displayName)" -ForegroundColor Yellow
-    Invoke-GraphJson -Method POST -Uri "$ApiRoot/identity/conditionalAccess/namedLocations" -Body $Body | Out-Null
-    Start-Sleep -Seconds 2
-    Get-NamedLocation -DisplayName $Item.displayName
+
+    $Created = Invoke-GraphJson -Method POST -Uri "$ApiRoot/identity/conditionalAccess/namedLocations" -Body $Body
+
+    if ($Created -and $Created.id) {
+        Write-Host "Ubicacion creada: $($Item.displayName) ($($Created.id))" -ForegroundColor Green
+        return $Created
+    }
+
+    Start-Sleep -Seconds 5
+    $Current = Get-NamedLocation -DisplayName $Item.displayName
+
+    if ($Current -and $Current.id) {
+        Write-Host "Ubicacion resuelta: $($Item.displayName) ($($Current.id))" -ForegroundColor Green
+        return $Current
+    }
+
+    throw "No se pudo crear o resolver la ubicacion $($Item.displayName)."
 }
 
 function New-OrGetIpNamedLocation {
@@ -640,9 +654,23 @@ function New-OrGetIpNamedLocation {
     }
 
     Write-Host "Creando ubicacion IP: $($Item.displayName)" -ForegroundColor Yellow
-    Invoke-GraphJson -Method POST -Uri "$ApiRoot/identity/conditionalAccess/namedLocations" -Body $Body | Out-Null
-    Start-Sleep -Seconds 2
-    Get-NamedLocation -DisplayName $Item.displayName
+
+    $Created = Invoke-GraphJson -Method POST -Uri "$ApiRoot/identity/conditionalAccess/namedLocations" -Body $Body
+
+    if ($Created -and $Created.id) {
+        Write-Host "Ubicacion creada: $($Item.displayName) ($($Created.id))" -ForegroundColor Green
+        return $Created
+    }
+
+    Start-Sleep -Seconds 5
+    $Current = Get-NamedLocation -DisplayName $Item.displayName
+
+    if ($Current -and $Current.id) {
+        Write-Host "Ubicacion resuelta: $($Item.displayName) ($($Current.id))" -ForegroundColor Green
+        return $Current
+    }
+
+    throw "No se pudo crear o resolver la ubicacion $($Item.displayName)."
 }
 
 function Get-ConditionalAccessPolicy {
