@@ -1,6 +1,6 @@
 {
   "displayName": "CA008 - Aplicaciones moviles - Requerir App Protection Policy - Para usuarios moviles",
-  "description": "Requiere App Protection Policy para iOS y Android.",
+  "description": "Requiere App Protection Policy para dispositivos moviles iOS y Android no administrados.",
   "state": "disabled",
   "conditions": {
     "users": {
@@ -17,14 +17,17 @@
         "Office365"
       ]
     },
-    "clientAppTypes": [
-      "mobileAppsAndDesktopClients"
-    ],
     "platforms": {
       "includePlatforms": [
         "iOS",
         "android"
       ]
+    },
+    "devices": {
+      "deviceFilter": {
+        "mode": "exclude",
+        "rule": "device.isCompliant -eq True -or device.deviceOwnership -eq \"Company\""
+      }
     }
   },
   "grantControls": {
