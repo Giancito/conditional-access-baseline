@@ -128,6 +128,7 @@ $ApiRoot = "https://graph.microsoft.com/beta"
 
 $GraphExplorerAppId = "de8bc8b5-d9f9-48b1-a8ad-b748da725064"
 $IntuneEnrollmentAppId = "d4ebce55-015a-49b5-a083-c84d1797ae8c"
+$MicrosoftIntuneAppId = "0000000a-0000-0000-c000-000000000000"
 $AzureDevOpsAppId = "499b84ac-1321-427f-aa17-267ca6975798"
 
 function Get-JsonFile {
@@ -393,11 +394,11 @@ function Test-WorkloadIdPremiumAvailable {
             return $true
         }
 
-        Write-Host "No se detecto licencia Workload ID Premium. Se omitiran CA029, CA030 y CA031. CA032 de Agentes IA se intentara crear si el tenant soporta la plantilla." -ForegroundColor Yellow
+        Write-Host "No se detecto licencia Workload ID Premium. Se omitiran CA030 y CA031. CA029 y CA032 se intentaran crear si el tenant soporta sus condiciones." -ForegroundColor Yellow
         return $false
     }
     catch {
-        Write-Host "No se pudo validar licenciamiento Workload ID Premium. Se omitiran CA029, CA030 y CA031. CA032 de Agentes IA se intentara crear si el tenant soporta la plantilla." -ForegroundColor Yellow
+        Write-Host "No se pudo validar licenciamiento Workload ID Premium. Se omitiran CA030 y CA031. CA029 y CA032 se intentaran crear si el tenant soporta sus condiciones." -ForegroundColor Yellow
         Write-GraphError -ErrorRecord $_
         return $false
     }
@@ -698,9 +699,33 @@ function Import-ConditionalAccessPolicy {
 
     $Body = $Raw | ConvertFrom-Json -Depth 100
     $Body.state = $State
+
+    # CA001: excluir Microsoft Intune y Microsoft Intune Enrollment.
+    # Esto evita impacto en flujos de enrolamiento, compliance y registro de dispositivos.
+    if ($Body.displayName -like "CA001 - *" -and $Body.conditions -and $Body.conditions.applications) {
+        $RequiredExcludedApps = @(
+            $MicrosoftIntuneAppId,
+            $IntuneEnrollmentAppId
+        )
+
+        $CurrentExcludedApps = @()
+        if ($Body.conditions.applications.excludeApplications) {
+            $CurrentExcludedApps += @($Body.conditions.applications.excludeApplications)
+        }
+
+        $UpdatedExcludedApps = @($CurrentExcludedApps + $RequiredExcludedApps | Select-Object -Unique)
+
+        if ($Body.conditions.applications.PSObject.Properties.Name -contains "excludeApplications") {
+            $Body.conditions.applications.excludeApplications = $UpdatedExcludedApps
+        }
+        else {
+            $Body.conditions.applications | Add-Member -NotePropertyName "excludeApplications" -NotePropertyValue $UpdatedExcludedApps -Force
+        }
+    }
+
     $Body = Normalize-ConditionalAccessPolicy -PolicyObject $Body
 
-    if ($Body.displayName -like "CA029 - *" -or $Body.displayName -like "CA030 - *" -or $Body.displayName -like "CA031 - *") {
+    if ($Body.displayName -like "CA030 - *" -or $Body.displayName -like "CA031 - *") {
         if (-not $script:WorkloadIdPremiumAvailable) {
             Write-Host "Omitida: $($Body.displayName) - No se detecto licencia Workload ID Premium." -ForegroundColor Yellow
             return
@@ -755,6 +780,7 @@ Write-Host ""
 Write-Host "Validando Enterprise Apps requeridas..." -ForegroundColor Cyan
 
 New-OrGetServicePrincipalByAppId -AppId $GraphExplorerAppId -DisplayName "Microsoft Graph Explorer" | Out-Null
+New-OrGetServicePrincipalByAppId -AppId $MicrosoftIntuneAppId -DisplayName "Microsoft Intune" | Out-Null
 New-OrGetServicePrincipalByAppId -AppId $IntuneEnrollmentAppId -DisplayName "Microsoft Intune Enrollment" | Out-Null
 New-OrGetServicePrincipalByAppId -AppId $AzureDevOpsAppId -DisplayName "Azure DevOps" | Out-Null
 
