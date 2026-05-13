@@ -284,7 +284,12 @@ Permite acceso a Microsoft 365 desde macOS únicamente si el dispositivo está a
 
 ## CA008 - Aplicaciones móviles - Requerir App Protection Policy - Para usuarios móviles
 
-Exige App Protection Policy para dispositivos móviles Android e iOS.
+Exige App Protection Policy para dispositivos móviles Android e iOS cuando el dispositivo no es corporativo ni compliant.
+
+La política excluye dispositivos que cumplen alguna de estas condiciones:
+
+- el dispositivo está marcado como compliant;
+- el dispositivo tiene propiedad corporativa.
 
 ---
 
